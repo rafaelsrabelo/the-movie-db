@@ -1,0 +1,13 @@
+.header {
+  align-items: center;
+  /* border-bottom: 3px solid var(--white); */
+  display: flex;
+  font-size: 2rem;
+  font-weight: 700;
+  justify-content: center;
+  padding: 30px;
+}
+
+.header svg {
+  margin-left: 0.25rem;
+}
