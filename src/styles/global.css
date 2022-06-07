@@ -11,8 +11,7 @@
 }
 
 body {
-  background: var(--background);
-  color: var(--white);
+  background: var(--white);
   -webkit-font-smoothing: antialiased;
   font-family: 'Roboto', sans-serif;
 }
