@@ -1,42 +1,27 @@
+.container h1 {
+  margin: 2rem 0;
+}
+
 .container {
   margin: 0 2rem;
 }
-
-.container h1 {
-  margin: 2rem 0;
-  color: var(--background);
-}
-
-.container .cardDisplay {
-  display: flex;
-}
 .container .card {
   background: var(--white);
-  width: 220px;
   border: 1px solid var(--text);
   border-bottom-left-radius: 8px;
   border-bottom-right-radius: 8px;
   box-shadow: 10px 10px 10px rgba(195, 203, 216, 0.22), -10px -10px 10px #ffffff8e;
+}
 
+.cardDisplay {
+  display: grid;
+  height: 100vh;
+  grid-template-columns: repeat(5, 1fr);
+  grid-template-rows: repeat(5, 1fr);
+  grid-gap: 100px;
 }
-.card + .card {
-  margin-left: 1rem;
-}
-.card img {
+
+img {
   width: 100%;
-}
-
-.card h4 {
-  margin-top: 1.5rem;
-  font-size: 1rem;
-  font-weight: 700;
-  padding: 0.5rem;
-  color: var(--background);
-}
-
-.card p {
-  font-size: 0.785rem;
-  font-weight: 400;
-  color: var(--background);
-  padding: 0 0.5rem 0.5rem;
+  height: 320px;
 }

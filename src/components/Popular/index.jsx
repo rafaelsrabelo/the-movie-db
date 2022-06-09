@@ -3,21 +3,35 @@ import styles from './styles.module.css'
 
 export function Popular() {
   const [movies, setMovies] = useState([])
+  const image_path = 'https://image.tmdb.org/t/p/w500/'
 
   useEffect(() => {
-
+    fetch("https://api.themoviedb.org/3/movie/popular?api_key=8f7ceb210fa27ba17b3483955ea57cd7")
+      .then(response => response.json())
+      .then(data => {
+        console.log(data.results)
+        setMovies(data.results)
+      })
   }, [])
 
   return (
     <div className={styles.container}>
       <h1>Populares 🚀</h1>
       <div className={styles.cardDisplay}>
-        <div className={styles.card}>
-          <img src="https://www.themoviedb.org/t/p/w300_and_h450_bestv2/6JjfSchsU6daXk2AKX8EEBjO3Fm.jpg" alt="" />
+        {
+          movies.map(movie => {
+            return (
+              <div className={styles.card} key={movie.id}>
 
-          <h4>Morbius</h4>
-          <p>Mar 30, 2022</p>
-        </div>
+                <img src={`${image_path}${movie.poster_path}`} alt="" />
+
+                <h4>{movie.title}</h4>
+                <p>{movie.description}</p>
+                <p>{movie.release_date}</p>
+              </div>
+            )
+          })
+        }
       </div>
     </div>
   )
