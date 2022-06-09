@@ -1,8 +1,11 @@
 import { useState, useEffect } from 'react'
 import styles from './styles.module.css'
+import { MagnifyingGlass } from 'phosphor-react'
 
 export function Popular() {
+  const [initialMovies, setInitialMovies] = useState([])
   const [movies, setMovies] = useState([])
+
   const image_path = 'https://image.tmdb.org/t/p/w500/'
 
   useEffect(() => {
@@ -10,24 +13,40 @@ export function Popular() {
       .then(response => response.json())
       .then(data => {
         console.log(data.results)
+        setInitialMovies(data.results)
         setMovies(data.results)
       })
   }, [])
 
+  const handleChange = ({ target }) => {
+    if (!target.value) {
+      setMovies(initialMovies)
+      return;
+    }
+
+    const filterMovie = movies.filter(({ title }) => title.includes(target.value))
+    setMovies(filterMovie)
+    console.log(filterMovie)
+  }
+
   return (
-    <div className={styles.container}>
-      <h1>Populares 🚀</h1>
-      <div className={styles.cardDisplay}>
+    <div>
+      <header>
+        <h1>Mais recentes 🚀</h1>
+        <div className={styles.searchBar}>
+          <MagnifyingGlass size={24} weight="bold" />
+          <input type="search" onChange={handleChange} />
+        </div>
+      </header>
+      <div className={styles.container}>
         {
           movies.map(movie => {
             return (
               <div className={styles.card} key={movie.id}>
 
-                <img src={`${image_path}${movie.poster_path}`} alt="" />
+                <img title={movie.title} src={`${image_path}${movie.poster_path}`} alt="" />
 
                 <h4>{movie.title}</h4>
-                <p>{movie.description}</p>
-                <p>{movie.release_date}</p>
               </div>
             )
           })
