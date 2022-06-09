@@ -11,6 +11,13 @@
   margin: 0 auto;
 }
 
-.header svg {
+.header a {
+  display: flex;
+  align-items: center;
+  color: var(--white);
+  text-decoration: none;
+}
+
+.header  svg {
   margin-left: 0.25rem;
 }
