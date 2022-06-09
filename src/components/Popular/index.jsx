@@ -1,4 +1,5 @@
 import { useState, useEffect } from 'react'
+import { Link } from 'react-router-dom'
 import styles from './styles.module.css'
 import { MagnifyingGlass } from 'phosphor-react'
 
@@ -47,6 +48,9 @@ export function Popular() {
                 <img title={movie.title} src={`${image_path}${movie.poster_path}`} alt="" />
 
                 <h4>{movie.title}</h4>
+                <Link to={`/movie/${movie.id}`}>
+                  Acessar
+                </Link>
               </div>
             )
           })

@@ -6,7 +6,7 @@ import {
   Route,
 } from "react-router-dom";
 import Home from './Home'
-import Test from './Test'
+import Movie from './Movie'
 
 import './styles/global.css'
 
@@ -15,7 +15,7 @@ ReactDOM.createRoot(document.getElementById('root')).render(
     <BrowserRouter>
       <Routes>
         <Route path="/" element={<Home />} />
-        <Route path="/teste" element={<Test />} />
+        <Route path="/movie/:id" element={<Movie />} />
       </Routes>
     </BrowserRouter>
   </React.StrictMode>
