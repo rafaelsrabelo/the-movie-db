@@ -40,9 +40,6 @@ export default function Movie() {
           <div className={styles.info}>
             <div className={styles.titleInfo}>
               <h1>{movie.title}</h1>
-              <div className={styles.back}>
-                <Link to="/">Voltar para Home</Link>
-              </div>
             </div>
             <div className={styles.infoHeader}>
               <strong>Nota do Público: </strong>
@@ -52,6 +49,12 @@ export default function Movie() {
               <p>{movie.release_date}</p>
             </div>
             <span className={styles.sinopse}>{movie.sinopse}</span>
+            <div className={styles.back}>
+              <Link to="/">
+                <ArrowLeft size={18} weight="bold" />
+                <a href="#">Voltar para Home</a>
+              </Link>
+            </div>
           </div>
         </div>
       </div>

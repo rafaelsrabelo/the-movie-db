@@ -47,13 +47,20 @@
   align-items: center;
 }
 .back {
-  margin-left: auto;
-  font-weight: 700;
-  text-decoration: underline;
+  margin-top: 3rem;
+  display: flex;
+  align-items: center;
 }
+
 .back a {
-  color: var(--background);
+  display: flex;
+  align-items: center;
+  font-size: 0.875rem;
+  font-weight: 700;
 }
 .back a:hover {
-  color: var(--link);
+  text-decoration: underline;
+}
+.back a svg {
+  margin-right: 0.5rem;
 }
