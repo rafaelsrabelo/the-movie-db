@@ -13,7 +13,6 @@ export function Popular() {
     fetch("https://api.themoviedb.org/3/movie/popular?api_key=8f7ceb210fa27ba17b3483955ea57cd7")
       .then(response => response.json())
       .then(data => {
-        console.log(data.results)
         setInitialMovies(data.results)
         setMovies(data.results)
       })
@@ -27,7 +26,6 @@ export function Popular() {
 
     const filterMovie = movies.filter(({ title }) => title.includes(target.value))
     setMovies(filterMovie)
-    console.log(filterMovie)
   }
 
   return (
@@ -43,15 +41,17 @@ export function Popular() {
         {
           movies.map(movie => {
             return (
-              <div className={styles.card} key={movie.id}>
-
-                <img title={movie.title} src={`${image_path}${movie.poster_path}`} alt="" />
-
-                <h4>{movie.title}</h4>
-                <Link to={`/movie/${movie.id}`}>
-                  Acessar
-                </Link>
-              </div>
+              <Link to={`/movie/${movie.id}`}>
+                <div className={styles.card} key={movie.id}>
+                  <img title={movie.title} src={`${image_path}${movie.poster_path}`} alt={movie.title} />
+                  <div className={styles.info}>
+                    <h4>{movie.title}</h4>
+                    <span className="date">
+                      {new Intl.DateTimeFormat("pt-BR").format(new Date(movie.release_date))}
+                    </span>
+                  </div>
+                </div>
+              </Link>
             )
           })
         }
