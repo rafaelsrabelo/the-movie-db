@@ -48,8 +48,8 @@ export function Popular() {
         {
           movies.map(movie => {
             return (
-              <Link to={`/movie/${movie.id}`}>
-                <div className={styles.card} key={movie.id}>
+              <div className={styles.card} key={movie.id}>
+                <Link to={`/movie/${movie.id}`}>
                   <img title={movie.title} src={`${image_path}${movie.poster_path}`} alt={movie.title} />
                   <div className={styles.info}>
                     <h4>{movie.title}</h4>
@@ -57,8 +57,8 @@ export function Popular() {
                       {new Intl.DateTimeFormat("pt-BR").format(new Date(movie.release_date))}
                     </span>
                   </div>
-                </div>
-              </Link>
+                </Link>
+              </div>
             )
           })
         }

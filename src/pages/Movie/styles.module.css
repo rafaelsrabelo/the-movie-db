@@ -20,7 +20,8 @@
 .subContainer img{
   width: 30%;
   height: 100%;
-  border-radius: 8px;
+  border-top-left-radius: 8px;
+  border-bottom-left-radius: 8px;
 }
 
 .info {
@@ -28,4 +29,31 @@
   font-family: 'Poppins', sans-serif;
 }
 
+.infoHeader {
+  display: flex;
+  margin-bottom: 2rem;
+}
 
+.infoHeader strong {
+  margin-right: 0.5rem;
+}
+
+
+.infoHeader span {
+  margin: 0 1rem;
+}
+.titleInfo {
+  display: flex;
+  align-items: center;
+}
+.back {
+  margin-left: auto;
+  font-weight: 700;
+  text-decoration: underline;
+}
+.back a {
+  color: var(--background);
+}
+.back a:hover {
+  color: var(--link);
+}
