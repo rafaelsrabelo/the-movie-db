@@ -2,20 +2,27 @@ import { useState, useEffect } from 'react'
 import { Link } from 'react-router-dom'
 import styles from './styles.module.css'
 import { MagnifyingGlass } from 'phosphor-react'
+import { Loading } from '../Loading'
 
 export function Popular() {
   const [initialMovies, setInitialMovies] = useState([])
   const [movies, setMovies] = useState([])
+  const [removeLoading, setRemoveLoading] = useState(false)
 
   const image_path = 'https://image.tmdb.org/t/p/w500/'
 
   useEffect(() => {
-    fetch("https://api.themoviedb.org/3/movie/popular?api_key=8f7ceb210fa27ba17b3483955ea57cd7")
-      .then(response => response.json())
-      .then(data => {
-        setInitialMovies(data.results)
-        setMovies(data.results)
-      })
+    setTimeout(
+      () => {
+        fetch("https://api.themoviedb.org/3/movie/popular?api_key=8f7ceb210fa27ba17b3483955ea57cd7")
+          .then(response => response.json())
+          .then(data => {
+            setInitialMovies(data.results)
+            setMovies(data.results)
+            setRemoveLoading(true)
+          })
+      }, 500
+    )
   }, [])
 
   const handleChange = ({ target }) => {
@@ -55,6 +62,7 @@ export function Popular() {
             )
           })
         }
+        {!removeLoading && <Loading />}
       </div>
     </div>
   )

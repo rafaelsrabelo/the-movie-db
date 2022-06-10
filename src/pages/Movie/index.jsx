@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import { useParams } from "react-router-dom";
+import { Link, useParams } from "react-router-dom";
 import { Header } from "../../components/Header";
 import styles from './styles.module.css'
 
@@ -14,12 +14,13 @@ export default function Movie() {
       .then(response => response.json())
       .then(data => {
 
-        const { title, poster_path, overview, release_date, vote_average } = data;
+        const { title, poster_path, overview, release_date, vote_average, genre_ids } = data;
         console.log(vote_average)
 
         const movie = {
           id,
           title,
+          genreIds: genre_ids,
           sinopse: overview,
           vote_average,
           image: `${image_path}${poster_path}`,
@@ -40,8 +41,10 @@ export default function Movie() {
             <div className={styles.titleInfo}>
               <h1>{movie.title}</h1>
               <p>{movie.vote_average}</p>
+              <p>{movie.genre_ids}</p>
             </div>
             <span>{movie.sinopse}</span>
+            <Link to="/">Voltar</Link>
           </div>
         </div>
       </div>
